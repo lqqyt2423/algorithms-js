@@ -19,12 +19,6 @@ module.exports = {
         "no-console": [
           1
         ],
-        "react/prop-types": [
-          0
-        ],
-        "react/no-danger": [
-          1
-        ],
         "indent": [
             1,
             2,
