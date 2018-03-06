@@ -1,9 +1,9 @@
 'use strict';
 
 const { randomArray, isSorted } = require('../../utils');
-const { selection, insertion } = require('../lib');
+const { selection, insertion, shell, merge } = require('../lib');
 
-const size = 50000;
+const size = 10000;
 console.log('数组长度:', size);
 const start = Date.now();
 const array = randomArray(size);
@@ -27,6 +27,25 @@ console.log('生成随机数组耗时:', `${costTime}ms`);
   const costTime = Date.now() - start;
   console.log('插入排序耗时:', `${costTime}ms`);
   if (!isSorted(array)) throw new Error('插入排序错误');
+})(array.slice());
+
+// 希尔排序
+(array => {
+  const start = Date.now();
+  shell(array);
+  const costTime = Date.now() - start;
+  console.log('希尔排序耗时:', `${costTime}ms`);
+  if (!isSorted(array)) throw new Error('希尔排序错误');
+})(array.slice());
+
+// 归并排序
+(array => {
+  const start = Date.now();
+  // 此排序返回了新的数组
+  array = merge(array);
+  const costTime = Date.now() - start;
+  console.log('归并排序耗时:', `${costTime}ms`);
+  if (!isSorted(array)) throw new Error('归并排序错误');
 })(array.slice());
 
 // 自带排序
