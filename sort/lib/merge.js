@@ -1,6 +1,6 @@
 'use strict';
 
-const { exch, less } = require('../../utils');
+const { less } = require('../../utils');
 
 /**
  * 归并排序
@@ -11,50 +11,46 @@ const { exch, less } = require('../../utils');
  */
 
 function mergeSort(array) {
-  const len = array.length;
-  if (len <= 1) return array;
-  if (len === 2) {
-    if (less(array[1], array[0])) exch(array, 0, 1);
-    return array;
-  }
-  const mid = Math.floor(len / 2);
-  let leftArray = array.slice(0, mid);
-  let rightArray = array.slice(mid);
-  leftArray = mergeSort(leftArray);
-  rightArray = mergeSort(rightArray);
-  array = merge(leftArray, rightArray);
-  return array;
+  _mergeSort(array, 0, array.length - 1);
 }
 
-function merge(leftArray, rightArray) {
-  const leftLen = leftArray.length;
-  const rightLen = rightArray.length;
-  if (leftLen === 0 || rightLen === 0) {
-    return leftArray.concat(rightArray);
+// 自顶向下的归并排序
+function _mergeSort(array, lo, hi) {
+  if (hi <= lo) return;
+  const mid = lo + Math.floor((hi - lo) / 2);
+  // 将左半边排序
+  _mergeSort(array, lo, mid);
+  // 将右半边排序
+  _mergeSort(array, mid + 1, hi);
+  // 归并结果
+  merge(array, lo, mid, hi);
+}
+
+// 原地归并的抽象方法
+function merge(array, lo, mid, hi) {
+  let i = lo;
+  let j = mid + 1;
+
+  // 将array[lo...hi]复制到a[lo...hi]
+  const a = [];
+  for (let k = lo; k <= hi; k++) {
+    a[k] = array[k];
   }
-  let array = [];
-  let leftItem = leftArray.shift();
-  let rightItem = rightArray.shift();
-  while (array.length < leftLen + rightLen) {
-    if (leftItem < rightItem) {
-      array.push(leftItem);
-      if (leftArray.length) {
-        leftItem = leftArray.shift();
-      } else {
-        array = array.concat(rightArray);
-        break;
-      }
+
+  // 归并回到array[lo...hi]
+  for (let k = lo; k <= hi; k++) {
+    if (i > mid) {
+      // 左半边用尽
+      array[k] = a[j++];
+    } else if (j > hi) {
+      // 右半边用尽
+      array[k] = a[i++];
+    } else if (less(a[j], a[i])) {
+      array[k] = a[j++];
     } else {
-      array.push(rightItem);
-      if (rightArray.length) {
-        rightItem = rightArray.shift();
-      } else {
-        array = array.concat(leftArray);
-        break;
-      }
+      array[k] = a[i++];
     }
   }
-  return array;
 }
 
 module.exports = mergeSort;

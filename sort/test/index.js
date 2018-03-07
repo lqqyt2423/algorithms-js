@@ -3,7 +3,7 @@
 const { randomArray, isSorted } = require('../../utils');
 const { selection, insertion, shell, merge } = require('../lib');
 
-const size = 10000;
+const size = 30000;
 console.log('数组长度:', size);
 const start = Date.now();
 const array = randomArray(size);
@@ -41,8 +41,7 @@ console.log('生成随机数组耗时:', `${costTime}ms`);
 // 归并排序
 (array => {
   const start = Date.now();
-  // 此排序返回了新的数组
-  array = merge(array);
+  merge(array);
   const costTime = Date.now() - start;
   console.log('归并排序耗时:', `${costTime}ms`);
   if (!isSorted(array)) throw new Error('归并排序错误');
