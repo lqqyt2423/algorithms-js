@@ -11,7 +11,8 @@ const { less } = require('../../utils');
  */
 
 function mergeSort(array) {
-  _mergeSort(array, 0, array.length - 1);
+  // _mergeSort(array, 0, array.length - 1);
+  __mergeSort(array);
 }
 
 // 自顶向下的归并排序
@@ -24,6 +25,16 @@ function _mergeSort(array, lo, hi) {
   _mergeSort(array, mid + 1, hi);
   // 归并结果
   merge(array, lo, mid, hi);
+}
+
+// 自底向上的归并排序
+function __mergeSort(array) {
+  const len = array.length;
+  for (let i = 1; i < len; i = i + i) {
+    for (let j = 0; j < len - i; j += i + i) {
+      merge(array, j, j + i - 1, Math.min(j + i + i - 1, len - 1));
+    }
+  }
 }
 
 // 原地归并的抽象方法

@@ -50,9 +50,17 @@ function randomArray(size) {
   return array;
 }
 
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 exports.less = less;
 exports.exch = exch;
 exports.show = show;
 exports.isSorted = isSorted;
 exports.readArray = readArray;
 exports.randomArray = randomArray;
+exports.shuffle = shuffle;

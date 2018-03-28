@@ -1,0 +1,19 @@
+{
+  "name": "algorithms-js",
+  "version": "1.0.0",
+  "description": "simple: https://algs4.cs.princeton.edu",
+  "main": "index.js",
+  "scripts": {
+    "sort_test": "node ./sort/test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lqqyt2423/algorithms-js.git"
+  },
+  "author": "liqiang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lqqyt2423/algorithms-js/issues"
+  },
+  "homepage": "https://github.com/lqqyt2423/algorithms-js#readme"
+}
