@@ -7,7 +7,7 @@ const { exch, less } = require('../../utils');
  * 找到数组中最小的元素，然后与第一个元素交换
  * 再找到其余中最小的元素，与第二个元素交换
  * 直至最后
- * @params {array}
+ * @param {Array} array
  */
 
 function selectionSort(array) {

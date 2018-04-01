@@ -7,7 +7,7 @@ const { less } = require('../../utils');
  * 将数组分为两部分分别排序，然后再合并在一起
  * 递归调用排序方法
  * 添加额外归并的方法
- * @params {array}
+ * @param {Array} array
  */
 
 function mergeSort(array) {

@@ -8,7 +8,7 @@ const { exch, less } = require('../../utils');
  * 插入排序每次比较元素和前一个元素来交换，希尔排序通过比较不相邻的元素，加快排序的速度
  * 不断缩小比较的幅度，直至比较相邻的元素
  * 递增序列 3 * h + 1
- * @params {array}
+ * @param {Array} array
  */
 
 function shellSort(array) {

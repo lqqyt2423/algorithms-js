@@ -7,7 +7,7 @@ const { exch, less, shuffle } = require('../../utils');
  * 通过切分方法将数组分成前后两个
  * 再递归调用排序方法
  * 关键在于切分
- * @params {array}
+ * @param {Array} array
  */
 function quickSort(array) {
   shuffle(array);

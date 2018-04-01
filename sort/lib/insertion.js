@@ -7,7 +7,7 @@ const { exch, less } = require('../../utils');
  * 数组从左至右依次检查
  * 当前索引与前一个索引数值对比，如果小于则交换位置，直至比前一个索引大
  * 当前索引左边有序，右边无序
- * @params {array}
+ * @param {Array} array
  */
 
 function insertionSort(array) {
