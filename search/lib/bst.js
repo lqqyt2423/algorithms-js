@@ -2,7 +2,7 @@
 
 class Node {
   constructor(key, val, N) {
-    // 键、值、以改结点为根的子树的结点总数
+    // 键、值、以该结点为根的子树的结点总数
     this.key = key;
     this.val = val;
     this.N = N;
